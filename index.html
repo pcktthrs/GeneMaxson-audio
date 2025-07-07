@@ -1,62 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Gene Maxson Voicemail</title>
+  <title>Voicemail from Gene Maxson</title>
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
     }
 
-    .voicemail-card {
-      background: white;
+    .card {
+      background-color: white;
       padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 1.5rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 400px;
+      width: 320px;
     }
 
-    img {
-      width: 150px;
-      height: 150px;
+    .card img {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
     }
 
-    audio {
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .card h1 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
     }
 
     .subtitle {
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 1.5rem;
+    }
+
+    .play-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .play-button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <div class="voicemail-card">
+
+  <div class="card">
     <img src="gene.jpg" alt="Gene Maxson">
     <h1>Voicemail from Gene Maxson</h1>
-    <div class="subtitle">Received July 7, 2025</div>
-    <audio controls>
+    <div class="subtitle">Received July 7, 2015</div>
+    <button id="playBtn" class="play-button">▶️ Play Voicemail</button>
+    <audio id="voicemail" preload="auto">
       <source src="GeneMaxsonVoicemail.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>
+
+  <script>
+    const button = document.getElementById('playBtn');
+    const audio = document.getElementById('voicemail');
+
+    let isPlaying = false;
+
+    button.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play();
+        button.textContent = '⏸️ Pause Voicemail';
+      } else {
+        audio.pause();
+        button.textContent = '▶️ Play Voicemail';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
 </body>
 </html>
